@@ -1,0 +1,13 @@
+<html>
+    <head>
+
+    </head>
+    <body>
+        <h1>Lista de usuarios</h1>
+        <ul>
+            {% for j in data%}
+            <li>{{j.0}} : {{j.1}} : {{j.2}} : {{j.3}}</li>
+            {% endfor%}
+        </ul>
+    </body>
+</html>

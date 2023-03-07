@@ -15,13 +15,16 @@ class Fraccion:
 # Create your views here.
 def nueva():
     return 0
+
 def index(request):
     #return HttpResponse("Bienvenido")
     return render(request,'index.html')
+
 def procesamiento(request):
     nombre = request.POST['nombre']
     nombre = nombre.title()
     return render(request,'proceso.html',{'name':nombre})
+
 def lista(request):
     jugadores = Reto.objects.all() #select * from Reto
     return render(request, 'datos.html',{'lista_jugadores':jugadores})
@@ -111,4 +114,29 @@ def usuarios(request):
     cur = con.cursor()
     res = cur.execute("SELECT * FROM usuarios")
     resultado = res.fetchall()
-    return HttpResponse(resultado)
+    context = {'data':resultado}
+    return render(request, 'usuarios.html', context)
+
+@csrf_exempt
+def usuarios_p(request):
+    body=request.body.decode('UTF-8')
+    eljson = loads(body)
+    grado = eljson['grado']
+    grupo = eljson['grupo']
+    num_lista = eljson['num_lista']
+    con = sqlite3.connect("db.sqlite3")
+    cur = con.cursor()
+    res = cur.execute("INSERT INTO usuarios(grupo, grado, num_lista )VALUES (?,?,?)", (grupo, grado, num_lista) )
+    con.commit()
+    return HttpResponse('OK')
+
+@csrf_exempt
+def usuarios_d(request):
+    body=request.body.decode('UTF-8')
+    eljson = loads(body)
+    id_usuario = eljson['id_usuario']
+    con = sqlite3.connect("db.sqlite3")
+    cur = con.cursor()
+    res = cur.execute("DELETE FROM usuarios WHERE id_usuario = ?", (str(id_usuario)) )
+    con.commit()
+    return HttpResponse('Eliminado papi')
