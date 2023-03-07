@@ -9,4 +9,5 @@ urlpatterns = {
     path('resta',views.resta,name='resta'),
     path('multiplicacion',views.multiplicacion,name='multiplicacion'),
     path('division',views.divison,name='division'),
+    path('usuarios',views.usuarios,name='usuarios'),
 }
