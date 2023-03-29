@@ -3,11 +3,11 @@
 
     </head>
     <body>
-        <h1>Lista de usuarios</h1>
-        <ul>
-            {% for j in data%}
-            <li>{{j.0}} : {{j.1}} : {{j.2}} : {{j.3}}</li>
-            {% endfor%}
-        </ul>
+    <h1>Lista de usuarios</h1>
+	<ul>
+	{% for j in lista_usuarios%}
+	<li> {{j.id}} : {{j.grupo}} : {{j.grado}} : {{j.num_lista}} </li>
+	{% endfor%}
+	</ul>
     </body>
 </html>
