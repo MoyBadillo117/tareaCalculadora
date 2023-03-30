@@ -239,3 +239,19 @@ def usuarioAñadido(request):
     #return HttpResponse("<h1> Usuario añadido</h1>")
     #return HttpResponse({'name':"HOLA"})
 
+def eliminarUsuario(request):
+    usuarios = Usuarios.objects.all() #select * from Usuarios 
+    print(usuarios)
+    return render(request, 'eliminarUsuario.html',{'lista_usuarios':usuarios}) 
+
+def usuarioEliminado(request):
+    usuarioId = request.POST['usuario']
+    usuarios = Usuarios.objects.all() #select * from Usuarios
+    con = sqlite3.connect("db.sqlite3")
+    cur = con.cursor()
+    res = cur.execute("DELETE FROM calculadora_usuarios WHERE id=?",(str(usuarioId),))
+    con.commit()
+    return render(request, 'usuarioEliminado.html')
+    #return HttpResponse("<h1> Usuario Eliminado</h1>")
+    #return HttpResponse({'name':"HOLA"})
+

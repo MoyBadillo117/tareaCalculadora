@@ -25,4 +25,6 @@ urlpatterns = [
     path('visualizarUsuarios',views.visualizarUsuarios,name='visualizarUsuarios'),
     path('añadirUsuario',views.añadirUsuario,name='añadirUsuario'), 
     path('usuarioAñadido',views.usuarioAñadido,name='usuarioAñadido'),
+    path('eliminarUsuario',views.eliminarUsuario,name='eliminarUsuario'), 
+    path('usuarioEliminado',views.usuarioEliminado,name='usuarioEliminado'),
 ]

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Eliminar usuario</title>
+	<style>
+		body {
+			background-color: #f2f2f2;
+			font-family: Arial, sans-serif;
+			padding: 20px;
+		}
+		h1 {
+			font-size: 28px;
+			margin-bottom: 20px;
+		}
+		label {
+			font-size: 18px;
+			margin-right: 10px;
+		}
+		select {
+			font-size: 16px;
+			padding: 8px;
+			margin-right: 10px;
+		}
+		input[type="submit"] {
+			background-color: #4CAF50;
+			color: white;
+			font-size: 16px;
+			padding: 10px 20px;
+			border: none;
+			border-radius: 4px;
+			cursor: pointer;
+		}
+		a.button {
+			background-color: #008CBA;
+			color: white;
+			font-size: 16px;
+			padding: 10px 20px;
+			text-align: center;
+			text-decoration: none;
+			display: inline-block;
+			border-radius: 4px;
+			cursor: pointer;
+		}
+	</style>
+</head>
+<body>
+	<h1>Eliminar usuario</h1>
+	<form action="usuarioEliminado" method="POST">
+		{% csrf_token %}
+		<label for="usuarios">Selecciona un usuario:</label>
+		<select id="usuarios" name="usuario">
+			{% for j in lista_usuarios %}
+				<option value="{{ j.id }}">{{ j.id }}</option>
+			{% endfor %}
+		</select>
+		<input type="submit" value="Eliminar">
+	</form>
+	<br>
+	<a href="Menu" class="button">Regresar al menú</a>
+</body>
+</html>
+
