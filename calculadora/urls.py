@@ -21,4 +21,6 @@ urlpatterns = [
     path('valida_usuario',views.valida_usuario,name='valida_usuario'),
     path('grafica',views.grafica,name='grafica'),
     path('barras',views.barras,name='barras'),
+    path('Menu',views.Menu,name='Menu'), 
+    path('visualizarUsuarios',views.visualizarUsuarios,name='visualizarUsuarios'), 
 ]

@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from rest_framework import viewsets
-from . serializers import RetoSerializer,JugadorSerializer
-from .models import Reto,Jugadores
+from . serializers import RetoSerializer,JugadorSerializer,UsuariosSerializer,Partida_JugadoresSerializer
+from .models import Reto,Jugadores,Usuarios,Partida_Jugadores 
 from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from json import loads,dumps
@@ -181,6 +181,8 @@ def grafica(request):
     return render(request,"charts.html",{'values':modified_data,\
         'h_title':h_var_JSON,'v_title':v_var_JSON})
 
+
+
 def barras(request):
     '''
     data = [
@@ -208,3 +210,11 @@ def barras(request):
         return render(request,'barras.html',elJSON)
     else:
         return HttpResponse("<h1> No hay registros a mostrar</h1>")
+    
+def Menu(request):
+    return render(request, 'Menu.html')
+
+def visualizarUsuarios(request):
+    usuarios = Usuarios.objects.all() #select * from Reto 
+    print(usuarios)
+    return render(request, 'visualizarUsuarios.html',{'lista_usuarios':usuarios})
