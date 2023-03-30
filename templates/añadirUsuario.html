@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ingresar Contraseña</title>
+</head>
+<body>
+	<h1>Bienvenido Usuario Anónimo</h1>
+	<form action="usuarioAñadido" method="POST">
+        {% csrf_token%}
+		<label for="contraseña">Contraseña:</label>
+		<input type="password" id="contraseña" name="contraseña">
+		<br>
+		<input type="submit" value="Ingresar">
+	</form>
+</body>
+</html>

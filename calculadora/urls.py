@@ -22,5 +22,7 @@ urlpatterns = [
     path('grafica',views.grafica,name='grafica'),
     path('barras',views.barras,name='barras'),
     path('Menu',views.Menu,name='Menu'), 
-    path('visualizarUsuarios',views.visualizarUsuarios,name='visualizarUsuarios'), 
+    path('visualizarUsuarios',views.visualizarUsuarios,name='visualizarUsuarios'),
+    path('añadirUsuario',views.añadirUsuario,name='añadirUsuario'), 
+    path('usuarioAñadido',views.usuarioAñadido,name='usuarioAñadido'),
 ]

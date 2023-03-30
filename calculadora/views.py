@@ -215,6 +215,27 @@ def Menu(request):
     return render(request, 'Menu.html')
 
 def visualizarUsuarios(request):
-    usuarios = Usuarios.objects.all() #select * from Reto 
+    usuarios = Usuarios.objects.all() #select * from Usuarios 
     print(usuarios)
     return render(request, 'visualizarUsuarios.html',{'lista_usuarios':usuarios})
+
+@csrf_exempt
+def añadirUsuario(request):
+    return render(request, 'añadirUsuario.html')
+
+def usuarioAñadido(request):
+    #body = request.body.decode('UTF-8')
+    #eljson = loads(body)
+    #grado = eljson['grado']
+    #grupo = eljson['grupo']
+    #num_lista = eljson['num_lista']
+    contraseña = request.POST['contraseña']
+    usuarios = Usuarios.objects.all() #select * from Usuarios
+    con = sqlite3.connect("db.sqlite3")
+    cur = con.cursor()
+    res = cur.execute("INSERT INTO calculadora_usuarios (password) VALUES (?)",(contraseña,))
+    con.commit()
+    return render(request, 'usuarioAñadido.html')
+    #return HttpResponse("<h1> Usuario añadido</h1>")
+    #return HttpResponse({'name':"HOLA"})
+
