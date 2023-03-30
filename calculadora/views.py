@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from rest_framework import viewsets
+from django.http import Http404
 from . serializers import RetoSerializer,JugadorSerializer,UsuariosSerializer,Partida_JugadoresSerializer
 from .models import Reto,Jugadores,Usuarios,Partida_Jugadores 
 from django.http import HttpResponse
@@ -254,4 +255,3 @@ def usuarioEliminado(request):
     return render(request, 'usuarioEliminado.html')
     #return HttpResponse("<h1> Usuario Eliminado</h1>")
     #return HttpResponse({'name':"HOLA"})
-

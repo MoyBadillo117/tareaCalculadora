@@ -1,7 +1,7 @@
 from django.urls import include,path
 from rest_framework import routers
-from . import views
-
+from . import views 
+app_name = 'calculadora'
 router = routers.DefaultRouter()
 router.register(r'reto', views.RetoViewSet)
 router.register(r'jugador', views.JugadoresViewSet)
