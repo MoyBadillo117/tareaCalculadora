@@ -14,7 +14,13 @@ class Usuarios(models.Model):
 
 class Partidas(models.Model):
     fecha = models.DateField()
-    id_usuario = models.ForeignKey(Usuarios, on_delete=models.CASCADE)
+    id_usuario = models.CharField(max_length=5)
+    minutos_jugados = models.IntegerField()
+    puntaje = models.IntegerField()
+
+class Partida_Jugadores(models.Model):
+    fecha = models.DateField()
+    id_usuario = models.ForeignKey(Usuarios, on_delete=models.CASCADE) 
     minutos_jugados = models.IntegerField()
     puntaje = models.IntegerField()
 
